@@ -65,14 +65,6 @@ impl Texture {
     pub fn set_image(&mut self, data: Option<&[u8]>, width: u32, height: u32, color: ColorFormat) {
         assert!(width > 0, "The texture width was 0",);
         assert!(height > 0, "The texture width was 0",);
-        assert!(
-            width < glow::MAX_TEXTURE_SIZE,
-            "The texture width was bigger than the maximum size"
-        );
-        assert!(
-            height < glow::MAX_TEXTURE_SIZE,
-            "The texture height was bigger than the maximum size"
-        );
         if let Some(data) = data {
             assert!(
                 data.len() >= (width * height * color.bytes_per_pixel()) as usize,
